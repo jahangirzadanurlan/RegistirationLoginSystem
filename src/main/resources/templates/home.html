@@ -23,24 +23,66 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" th:href="@{/}">Registration and
+            <a class="navbar-brand" href="#" th:href="@{/home}">Registration and
                 Login Module</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-            </ul>
+                <button type="submit" class="btn btn-link navbar-btn" onclick="logout()">Logout</button>
+            <button id="add-role-btn" onclick="showRoleForm()">Add Role</button>
+            <div id="role-form-container"></div>
+
         </div>
     </div>
 </nav>
+<script>
+    function logout() {
+        alert("You have been logged out.");
+        window.location.href = '/login';
+    }
+    function showRoleForm() {
+        // create a new form element
+        const form = document.createElement("form");
+
+        // create a new input element for role name
+        const input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("name", "roleName");
+        input.setAttribute("placeholder", "Enter role name");
+        form.appendChild(input);
+
+        // create a save button
+        const saveButton = document.createElement("button");
+        saveButton.setAttribute("type", "button");
+        saveButton.textContent = "Save";
+        saveButton.onclick = function() {
+            // get the role name from the input field
+            const roleName = input.value;
+
+            // send an AJAX request to save the role
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/roles");
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert("Role saved successfully!");
+                }
+            };
+            xhr.send(JSON.stringify({ "roleName": roleName }));
+        };
+        form.appendChild(saveButton);
+
+        // add the form to the page
+        const container = document.getElementById("role-form-container");
+        container.appendChild(form);
+    }
+
+</script>
 
 <br>
 <br>
 
 <div class="container">
-    <h1>Registration and Login with Spring Boot, Spring Security,
-        Thymeleaf, Hibernate and MySQL</h1>
-    Welcome <span sec:authentication="principal.username"> User</span>
+    <h1>Registration and Login with Spring Boot,Thymeleaf,Hibernate and PostgreSql</h1>
+    <h3>Welcome <span th:text="${username}"> User</span></h3>
+    <img src="https://media.istockphoto.com/id/1304835378/photo/innovative-idea.jpg?b=1&s=170667a&w=0&k=20&c=CCYy_w8j427rla2c88J5agdHwx4l6JBznQyAkb-UveI=" alt="Assistant" style="display: block; margin: 0 auto;">
 </div>
 </body>
 </html>

@@ -1,10 +1,12 @@
 package com.example.registirationloginsystem.Service;
 
-import com.example.registirationloginsystem.dto.request.UserRequestDto;
+import com.example.registirationloginsystem.dto.request.ClientRequestDto;
+import com.example.registirationloginsystem.dto.response.ClientResponseDto;
 import com.example.registirationloginsystem.dto.response.ResponseDto;
-import com.example.registirationloginsystem.dto.response.UserResponseDto;
 
-public interface UserService {
-    ResponseDto save(UserRequestDto userRequestDto);
+public interface ClientService{
+    ResponseDto save(ClientRequestDto clientRequestDto);
+    boolean authenticateUser(String name,String password);
+
 
 }

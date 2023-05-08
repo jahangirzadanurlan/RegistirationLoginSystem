@@ -1,27 +1,29 @@
 package com.example.registirationloginsystem.controller;
 
-import com.example.registirationloginsystem.Service.UserService;
-import com.example.registirationloginsystem.dto.request.UserRequestDto;
-import com.example.registirationloginsystem.dto.response.ResponseDto;
+import com.example.registirationloginsystem.Service.ClientService;
+import com.example.registirationloginsystem.dto.request.ClientRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequiredArgsConstructor
-@RequestMapping("/registration")
-public class UserController {
-    private final UserService userService;
+import javax.servlet.http.HttpSession;
 
-    @GetMapping
+@Controller
+@RequiredArgsConstructor
+public class ClientController {
+    private final ClientService clientService;
+
+    @GetMapping("/registration")
     public String showRegistrationForm(Model model){
-        model.addAttribute("user",new UserRequestDto());
+        model.addAttribute("user",new ClientRequestDto());
         return "registration";
     }
-    @PostMapping
-    public String addUser(@ModelAttribute UserRequestDto userRequestDto){
-        userService.save(userRequestDto);
-        return "redirect:/registration&success";
+    @PostMapping("registration")
+    public String addUser(@ModelAttribute ClientRequestDto clientRequestDto, HttpSession session){
+        clientService.save(clientRequestDto);
+        session.setAttribute("username", clientRequestDto.getName());
+        return "redirect:/home";
     }
 
 }

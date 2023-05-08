@@ -1,2 +1,8 @@
-package com.example.registirationloginsystem.repository;public interface RoleRepository {
+package com.example.registirationloginsystem.repository;
+
+import com.example.registirationloginsystem.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoleRepository extends JpaRepository<Role,Long> {
+
 }
