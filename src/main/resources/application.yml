@@ -8,3 +8,7 @@ spring:
     showSql: true
     hibernate:
       ddlAuto: update
+  application:
+    name: Client Managment System
+    author: Jahangirzada Nurlan
+    version: 1.0.0
