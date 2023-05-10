@@ -1,3 +1,8 @@
+## Tools
+
+- Python
+- Data Science
+
 # registiration-login-system
 ![image](https://github.com/jahangirzadanurlan/registiration-login-system/assets/103985861/187c72d1-799e-47bc-988d-fe7bce798d99)
 ![image](https://github.com/jahangirzadanurlan/registiration-login-system/assets/103985861/1a0a20ed-0e4d-458b-a37d-8afd8a964ac8)
