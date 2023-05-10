@@ -1,7 +1,9 @@
 ## Tools
 
-- Python
-- Data Science
+- Thymleaf
+- Spring web
+- Spring Data JPA
+- Lombok
 
 # registiration-login-system
 ![image](https://github.com/jahangirzadanurlan/registiration-login-system/assets/103985861/187c72d1-799e-47bc-988d-fe7bce798d99)
